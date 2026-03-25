@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>R.K. Jhunjhunwala & Associates | Chartered Accountants, Mumbai</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:    #1c3d7a;
+      --navy2:   #163063;
+      --gold:    #2a7e3b;
+      --gold2:   #359648;
+      --cream:   #f8f8f8;
+      --white:   #ffffff;
+      --text:    #2b2b2b;
+      --muted:   #6b6b6b;
+      --light:   #efefef;
+      --border:  #dedede;
+      --border2: rgba(42,126,59,0.2);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    body { background: var(--white); color: var(--text); font-family: 'Inter', sans-serif; font-weight: 400; overflow-x: hidden; }
+
+    /* ─── TOP BAR ─── */
+    .topbar {
+      background: var(--navy);
+      padding: 0.55rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.75rem; color: rgba(255,255,255,0.65);
+    }
+    .topbar-left { display: flex; gap: 2rem; align-items: center; }
+    .topbar-left a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+    .topbar-left a:hover { color: var(--gold2); }
+    .topbar-right { display: flex; gap: 1.5rem; align-items: center; }
+    .topbar-right a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .topbar-right a:hover { color: var(--gold2); }
+    .topbar-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5vw;
+      display: flex; align-items: stretch; justify-content: space-between;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: box-shadow .3s;
+    }
+    .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 0.9rem; padding: 0.7rem 0; }
+    .nav-logo-img { height: 90px; width: auto; object-fit: contain; flex-shrink: 0; }
+    .nav-brand-text { display: flex; flex-direction: column; justify-content: center; }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem; font-weight: 700; color: var(--navy);
+      letter-spacing: 0.01em; line-height: 1.1;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-tagline { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+    .nav-links { display: flex; align-items: stretch; list-style: none; gap: 0; }
+    .nav-links > li { position: relative; display: flex; align-items: stretch; }
+    .nav-links > li > a {
+      display: flex; align-items: center;
+      padding: 0 1.2rem;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--text); text-decoration: none;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .nav-links > li > a:hover,
+    .nav-links > li > a.active { color: var(--navy); border-bottom-color: var(--gold); }
+    .nav-cta {
+      display: flex; align-items: center;
+      background: var(--gold); color: var(--white);
+      padding: 0 1.6rem;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .25s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+
+    /* ─── HERO ─── */
+    #hero {
+      background: var(--navy);
+      min-height: 88vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg-lines {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 4rem 7rem 5vw; z-index: 2; position: relative;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold2);
+      margin-bottom: 2rem;
+    }
+    .hero-eyebrow-line { width: 28px; height: 1px; background: var(--gold); }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 4vw, 4.8rem); font-weight: 700;
+      line-height: 1.1; color: var(--white); margin-bottom: 1.6rem;
+    }
+    h1 em { font-style: italic; color: var(--gold2); }
+    .hero-sub {
+      font-size: 1rem; line-height: 1.85; color: rgba(255,255,255,0.6);
+      max-width: 450px; margin-bottom: 3rem; font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-gold {
+      background: var(--gold); color: var(--white);
+      padding: 0.9rem 2.2rem; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      border: 2px solid var(--gold); transition: background .25s, transform .2s;
+    }
+    .btn-gold:hover { background: var(--gold2); border-color: var(--gold2); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2.2rem; font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.3); transition: border-color .25s, color .25s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold2); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 4rem;
+      padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat { }
+    .stat-n {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 700; color: var(--gold2); line-height: 1;
+    }
+    .stat-l { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 0.4rem; }
+
+    .hero-right {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      padding: 7rem 5vw 7rem 3rem; z-index: 2;
+    }
+    .hero-card-stack { position: relative; width: 100%; max-width: 380px; }
+    .hcard {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 2.2rem 2.5rem;
+      margin-bottom: 1.2rem;
+      transition: border-color .3s, background .3s;
+    }
+    .hcard:hover { border-color: var(--border2); background: rgba(255,255,255,0.07); }
+    .hcard-icon { font-size: 1.5rem; margin-bottom: 0.9rem; }
+    .hcard-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .hcard-body { font-size: 0.8rem; line-height: 1.7; color: rgba(255,255,255,0.5); }
+    .hcard-accent { border-left: 3px solid var(--gold); }
+
+    /* ─── ABOUT ─── */
+    #about {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .about-left {
+      background: var(--cream); padding: 7rem 5rem 7rem 5vw;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-right {
+      background: var(--white); padding: 7rem 5vw 7rem 5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .section-eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); display: flex; align-items: center; gap: 0.7rem;
+      margin-bottom: 1.2rem;
+    }
+    .section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 3.2rem); font-weight: 700;
+      line-height: 1.15; color: var(--navy);
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+    .body-text {
+      font-size: 0.92rem; line-height: 1.9; color: var(--muted);
+      margin-top: 1.5rem; font-weight: 400;
+    }
+    .body-text strong { color: var(--text); font-weight: 500; }
+
+    .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 2.5rem; background: var(--border); }
+    .ab-pill {
+      background: var(--cream); padding: 1.5rem 1.6rem;
+      transition: background .25s;
+    }
+    .ab-pill:hover { background: var(--white); }
+    .ab-pill-icon { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .ab-pill-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.3rem; }
+    .ab-pill-body { font-size: 0.77rem; line-height: 1.6; color: var(--muted); }
+
+    .vision-block { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+    .vision-block:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+    .vision-label {
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 0.7rem;
+    }
+    .vision-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy); margin-bottom: 0.7rem; }
+    .vision-body { font-size: 0.88rem; line-height: 1.85; color: var(--muted); }
+    .vision-list { margin: 0.8rem 0 0 0; padding: 0; list-style: none; }
+    .vision-list li { font-size: 0.85rem; color: var(--muted); padding: 0.3rem 0; display: flex; align-items: flex-start; gap: 0.6rem; }
+    .vision-list li::before { content: '→'; color: var(--gold); font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* ─── CLIENTS ─── */
+    #clients {
+      background: var(--navy); padding: 3.5rem 5vw;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .clients-label {
+      text-align: center; font-size: 0.68rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 2rem;
+    }
+    .clients-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
+    .chip {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.45rem 1rem; font-size: 0.75rem;
+      color: rgba(255,255,255,0.5); transition: border-color .25s, color .25s;
+      white-space: nowrap;
+    }
+    .chip:hover { border-color: var(--gold); color: rgba(255,255,255,0.9); }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--white); padding: 7rem 5vw; }
+    .services-top {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 4rem; gap: 2rem; flex-wrap: wrap;
+    }
+    .services-sub { max-width: 360px; font-size: 0.9rem; line-height: 1.8; color: var(--muted); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); }
+    .svc {
+      padding: 3rem 2.6rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden; transition: background .3s;
+    }
+    .svc:nth-child(3n) { border-right: none; }
+    .svc:nth-child(n+4) { border-bottom: none; }
+    .svc::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 3px; background: var(--gold);
+      transition: width .4s ease;
+    }
+    .svc:hover { background: var(--cream); }
+    .svc:hover::after { width: 100%; }
+    .svc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 700; color: var(--light);
+      line-height: 1; margin-bottom: 1.2rem;
+      transition: color .3s;
+    }
+    .svc:hover .svc-num { color: var(--border); }
+    .svc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 600; color: var(--navy); margin-bottom: 0.8rem;
+    }
+    .svc-body { font-size: 0.83rem; line-height: 1.78; color: var(--muted); }
+    .svc-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1.5rem; font-size: 0.73rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
+      opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .3s;
+    }
+    .svc:hover .svc-link { opacity: 1; transform: translateY(0); }
+
+    /* ─── HOW WE DO IT ─── */
+    #howwedoit {
+      background: var(--cream); padding: 7rem 5vw;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: center;
+    }
+    .how-left {}
+    .how-right {}
+    .how-steps { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0; }
+    .how-step {
+      display: grid; grid-template-columns: 48px 1fr;
+      gap: 1.2rem; padding: 1.6rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+    .how-step:first-child { border-top: 1px solid var(--border); }
+    .how-step-num {
+      width: 48px; height: 48px;
+      border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--gold);
+      flex-shrink: 0;
+    }
+    .how-step-title { font-size: 0.88rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+    .how-step-body { font-size: 0.8rem; line-height: 1.7; color: var(--muted); }
+
+    .how-highlight {
+      background: var(--navy); padding: 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .how-highlight::before {
+      content: '"';
+      position: absolute; top: -1rem; left: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 10rem; line-height: 1; color: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+    .how-highlight-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem; font-style: italic; font-weight: 500;
+      line-height: 1.6; color: var(--white); position: relative; z-index: 1;
+    }
+    .how-highlight-attr {
+      margin-top: 1.5rem; font-size: 0.72rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold2); position: relative; z-index: 1;
+    }
+    .how-frn-row { display: flex; gap: 1px; margin-top: 1.5rem; background: rgba(255,255,255,0.1); }
+    .how-frn-cell { flex: 1; background: rgba(255,255,255,0.04); padding: 1.2rem 1.4rem; }
+    .how-frn-label { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.35rem; }
+    .how-frn-val { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--gold2); }
+
+    /* ─── TEAM ─── */
+    #team { background: var(--white); padding: 7rem 5vw; }
+    .team-header { margin-bottom: 4rem; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .team-note { max-width: 360px; font-size: 0.88rem; line-height: 1.8; color: var(--muted); }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); }
+    .tcard { background: var(--white); padding: 2.8rem 2.5rem; transition: background .3s; }
+    .tcard:hover { background: var(--cream); }
+    .tcard-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700;
+      color: var(--gold2); margin-bottom: 1.5rem;
+      border: 3px solid var(--light);
+    }
+    .tcard-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+    .tcard-role { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .tcard-bio { font-size: 0.82rem; line-height: 1.75; color: var(--muted); }
+    .tcard-badge {
+      display: inline-block; margin-top: 1.1rem;
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); background: var(--navy); padding: 0.3rem 0.75rem;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact { display: grid; grid-template-columns: 1fr 1fr; }
+    .contact-left { background: var(--navy); padding: 7rem 5rem 7rem 5vw; }
+    .contact-left h2 { color: var(--white); }
+    .contact-left .section-eyebrow { color: var(--gold2); }
+    .contact-left .section-eyebrow::before { background: var(--gold2); }
+    .contact-desc { font-size: 0.9rem; line-height: 1.85; color: rgba(255,255,255,0.55); margin-top: 1.4rem; margin-bottom: 3rem; font-weight: 300; }
+    .cdetail { display: flex; gap: 1.1rem; margin-bottom: 1.8rem; align-items: flex-start; }
+    .cdetail-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--gold2);
+    }
+    .cdetail-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold2); margin-bottom: 0.35rem; }
+    .cdetail-val { font-size: 0.87rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .cdetail-val a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color .2s; }
+    .cdetail-val a:hover { color: var(--gold2); }
+
+    .offices { margin-top: 0.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .office-box { border: 1px solid rgba(255,255,255,0.08); padding: 1.4rem; transition: border-color .25s; }
+    .office-box:hover { border-color: var(--border2); }
+    .office-label { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .office-val { font-size: 0.8rem; line-height: 1.7; color: rgba(255,255,255,0.55); }
+
+    .contact-right { background: var(--cream); padding: 7rem 5vw 7rem 5rem; }
+    .contact-right h2 { color: var(--navy); }
+    .cform { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2.5rem; }
+    .crow { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .cfield { display: flex; flex-direction: column; gap: 0.45rem; }
+    .cfield label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .cfield input, .cfield select, .cfield textarea {
+      background: var(--white); border: 1px solid var(--border);
+      color: var(--text); padding: 0.85rem 1rem;
+      font-family: 'Inter', sans-serif; font-size: 0.87rem; font-weight: 400;
+      outline: none; transition: border-color .25s; resize: none;
+      -webkit-appearance: none;
+    }
+    .cfield input::placeholder, .cfield textarea::placeholder { color: #b0bbcb; }
+    .cfield input:focus, .cfield select:focus, .cfield textarea:focus { border-color: var(--gold); }
+    .cfield textarea { min-height: 110px; }
+    .cfield select option { background: var(--white); }
+    .btn-submit {
+      background: var(--navy); color: var(--white); border: none; cursor: pointer;
+      padding: 1rem 2.5rem; font-family: 'Inter', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      align-self: flex-start; transition: background .25s, transform .2s;
+    }
+    .btn-submit:hover { background: var(--navy2); transform: translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080f1e; border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 2.5rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-brand {}
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+    .footer-logo span { color: var(--gold2); }
+    .footer-frn { font-size: 0.62rem; color: rgba(255,255,255,0.3); letter-spacing: 0.12em; margin-top: 3px; }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold2); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)} }
+    .hero-left > * { animation: fadeUp .75s ease both; }
+    .hero-left > *:nth-child(1){animation-delay:.1s}
+    .hero-left > *:nth-child(2){animation-delay:.2s}
+    .hero-left > *:nth-child(3){animation-delay:.35s}
+    .hero-left > *:nth-child(4){animation-delay:.5s}
+    .hero-left > *:nth-child(5){animation-delay:.65s}
+    .hero-right { animation: fadeUp .9s .3s ease both; }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:1024px){
+      #hero,#about,#contact,#howwedoit{grid-template-columns:1fr}
+      .hero-right{display:none}
+      .services-grid{grid-template-columns:1fr 1fr}
+      .svc:nth-child(2n){border-right:none}
+      .svc:nth-child(n+5){border-bottom:none}
+      .svc:nth-child(3n){border-right:1px solid var(--border)}
+      .team-grid{grid-template-columns:1fr 1fr}
+      .contact-left,.contact-right{padding:5rem 5vw}
+      .about-left,.about-right{padding:5rem 5vw}
+    }
+    @media(max-width:700px){
+      .services-grid,.team-grid,.about-pillars,.crow{grid-template-columns:1fr}
+      .svc{border-right:none}
+      .nav-links,.nav-cta{display:none}
+      .hero-stats{gap:1.5rem}
+      .topbar{display:none}
+      .offices{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📞 <a href="tel:9821186339">+91 98211 86339</a></span>
+    <div class="topbar-divider"></div>
+    <span>✉️ <a href="/cdn-cgi/l/email-protection#d6a4bdbcb7e4e6e7e696b1bbb7bfbaf8b5b9bb"><span class="__cf_email__" data-cfemail="8cfee7e6edbebcbdbcccebe1ede5e0a2efe3e1">[email&#160;protected]</span></a></span>
+    <div class="topbar-divider"></div>
+    <span>🌐 <a href="http://www.carkj.in" target="_blank">www.carkj.in</a></span>
+  </div>
+  <div class="topbar-right">
+    <a href="tel:02249712167">Office: 022-4971 2167</a>
+    <div class="topbar-divider"></div>
+    <a href="#contact">Enquire Now</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img class="nav-logo-img" src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACUAQ4DASIAAhEBAxEB/8QAHAABAAEFAQEAAAAAAAAAAAAAAAgDBAUGBwEC/8QAPhAAAQMDAgQDBQUFBwUAAAAAAAECAwQFEQYHEiExQQgTURQiYXGBFTKCkbEjJDNCchYYUmKhssE0U5KTwv/EABoBAQADAQEBAAAAAAAAAAAAAAADBAUBAgb/xAAwEQACAgECBAQDCAMAAAAAAAAAAQIDEQQxEiFBUQUTkfAiYYEGFBUyQnHR4ZKhsf/aAAwDAQACEQMRAD8AmWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcu3J3u0lo6okt0TpLxc4+T6elVFbGv+d68k+XNfgSV1TtfDBZZHbdCqPFN4R1EEUa3xNauqKlW23T1ogb2jesk78fhVv6FN/iN3EaqotitCKn+KinT/7Ln4XqOy9Sj+Labu/QlkCO+z++erdV7hW7Tl2slv8AZqxJEdJSxyNdDwsc5HrxKqcPu47feT5L3673CltVrqrlWyJFTUsTpZXKvRqJlStdp50yUZblqjU13wc4bF0CNekfEbcrhuDFR3S2UMGn6yoSGJWcXnU6KuGvc7OHdsphMZ5dOclEVFRFRUVF7oL9PZQ0prcafU16hNwewABAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAULjVxUFvqa6dcQ08TpZF9GtRVX/RBuNjhnif3TnsSJovTtQ5lznjR9dPGq8VPG77rG4/nd19UTHqhgdnvD4yuo4L7rxZmpLiSK1serVVF5osz0XOV/wp9VXoa7sFbHbhb2V+p7w1J44HvuMjXpy8xzsRNx6N5YT0aS6NXUWvSRVNfJ9WY+nqWsm77ea6Iw9j0vpyx0qUtoslBRxJ/LFA1P8AgyK0VEvWkp//AFoVwZbk28tmsopLCRRipaaJ/HFTQxvxjiaxEU4H4wdbewWam0ZRy4mrk8+t4V+7Ci8mr/Uqfk1Tu18udHZbNWXe4SpFSUcD55nr2a1FVfryIlbW2+s3d3wqNR3aHiooZkrahi82sY1cQw/6Jn5L6l/QVrid09o/9KHiFj4VRD80uX06ml6w0HctNabtl5qJ2zJUyOpq6JjFa631PCkjYXqvVVjc1yKnLr8FWVnh11n/AGv28pvaZkfcrdilq0zzVUT3XfVuFKW8WlYLrFUU78R0d9gZRTOxygq2KrqWb4ZVVjVe+Y06IR78P2q6nQe6TLfdV9npK6X7PuDX8kikRyox/wBH8s+jlXsXJy++6dv9S5+/fYowj9x1KX6ZcvfvuTSBY3O72u2s4q+vp6f4PeiKv06i33Jlf79NTz+R/wB2RnAi/JF5r+R8/wCbDi4c8+x9H5U+Hjxy7l8ChT1dNUPcyCZsvD95WLlEX0z0yVz2nnYiTzsAAdOgAAAAAAAAAAAAAAAAAAAAAAAAAAA1vdN0rdt9RrDnj+zZ8Y/oU2QtrrRxXG11Vvn/AIVTC+F/9Lmqi/qeoPEkzzNcUWiNvgmkibcdSQLjzVp6ZzfXhRXov6tJNkLdor3LtfvHJRXxy08DZn26uVejUV3uv+WeF2fRck0WOa9iPY5HNcmUVFyioX/E4NXcfRmd4VNOjg6xPQCx1BdaOx2StvFfKkVLRwumkcvo1Mmek28I0m0llnC/Fxq2R1Pb9v7bO1J7g5stbh2MMRf2bFXtxOTP0T1Keyt8s23mjEoPs6rrbvVSLLWSM4WsV3RrEcq5VETvjqqmhbTWus3a3un1Bd2K+hppkr6pruaI1HfsIfqqJlPRrvU6hd6dNBbkwzeS2S3zSccTXM4sxuXDmpnu1V5fDBT+02q1Xh9VVVMkot/G8Zw3s/2/ruWvsvpNL4jbbddFykl8CzjKW6/f+zPXPUmrdW22e327SjIqSdvC6ad7l4e6ORy8CIqdUXnzRDT7roTTyXya+azvdphuM7kfOylgSad64xnCJhq4ROaIpmd45L/R32PzLrVfZNWnHTNYvCjE5cTVRMZx159lQttU7d0cVlhjt1xkk+2aR0FJWPVGpDWKiPh6dGvw5i56Kqd1MmmjUai50uyTxvl8K/xjjPqVdR47JzlXpNNCDj1a4n8t8+vIyWmK6hqKuSLQ2lHV1TFykuN0l4lYvqqZ5Zx2VPkbxRaXuNa7ztVXqW4Kqf8ARU6LDSt+bU95/wCJfoRf8NesptL7ktt90klhpbs72SpbMq5jnRcNV2ei8Xur9CZZuz8IWiag3lfJYXot/rko6fU2eILzdRNyl83y9P5PiCGKCFsMETIo2phrWNwiJ8j7AJC+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcR8R+0b9WMXVGnYW/bcMaMqYERE9sjTp+NqckXumE7JjnW0O91z0U1NL6wo6qqt9MvlxyKi+00iJ/I5q/eanbunx7SzVUaiqqoiJ3U0/Xm22j9as4r1ao1qUTDKuBfLmb+JOvyXkaFOri6/KuWY9O6M6/RzVnnUPEuvZlKzbrbeXWnbNS6qtzVcmfLmk8uRvza7CocV8Ue6Vsvlui0fpiubWU6yJLcJ4feY/hXLImr397muPRE7qXl/8L6ucq2HVicGf4dfSo5f/Jip/tMptx4cqSz3imuupr0y5rTPSSKlpolji4k6K5yqquTPZET45J6lo6ZeapN46Fe166+PlOCWd2bz4edGJo7bylZPGjbjcMVdYvdHOT3W/hbhPzOhS08Es0c0kET5IsrG9zEVzM9cL2PvianLKJ9T0y7Zu2TlLqa1MFVBQj0MFrnTkGp7DJb5HpFMio+CXGfLen/C80X5lpDo6BNBSaVmrp5UfGqMqVxxwyIvEyRnorHo1zfRWobOrmo5GqqZXomT0gjVGNvmpfEeXRW5ubXNrH0IUb92OopdRRaoZB7JJc3uZXsi91Ke4xLiXh7ojsJI1eqouSTmxWsk1tt1Q3KaRq3Cn/da5qdpWd8ejkw5PmYrdrQD9Ve10FPHiG6Na506IjkpKuP+HK5MovC5uWOxz5NMN4ftrtX7eXy5z3S7Wqa3VsLWOp6ZZHuc9qrwP95rUbhFcmOec/BDZuuru0yUn8S29+9jNppto1TcVmMt/fvc7SADKNcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0PxCIi7K6rRUyn2dJ+hsOgURNEWRE5fuMP8AsQ819p1mrNG3TTklW6kbcKd0CzNZxqzKdcZTJf2KgS1WWjtqSrKlLAyJHq3HFwpjOOxM5rylHrkiUX5rl0wR9261LeNIXq/3e5TPqNI12oqyjqHKqu+z5klVGSL1wx2cLjpyOheGOR0u0NDIsrpc1tbhyuVcp7VLjmpsGmtB2y02K+WaqkdcqO811RVzsmYiIiTOyrEx2TsvUutttJUmh9Jwacoaqapp4JZpGSTInFiSRz8LjrjixnvgsX312RklvleiyVtPRZXKOdsP15f6OY0+jbDrTezW8N+jqZvY4qNYPLqXx8HE1+VThX/Kn5Gx7NTV1s1Nq3RM1yqrnQ2Spi9inqJFkkjjkjR/lOcvNVTPfsVNQbYXKt1fc9RWbXl3sL7k2NtRFSQsVHcCKjea/NfzNm2/0ba9GWuakoJqurnqZVnq6yrk456mRf5nrhE+iIcsui68cWeS5dsYFVMlZnhxzfPunnHtmkatRP70ei1x0s1Z+jzousr9SaY0tcr/AFq/saGndKrc83qie61Piq4RPmYq66Mjr9zbNrdbg+N9ro5aVKVIkVJEkz7yuzyxnpg+9x9HQa2t1Da66ulgt0NbHU1VOxiL7W1i5SJy55NXvgjcoTcE3yS5+rJYwsgpuK5t8vRHGtp6+q0rqyw3i736KufreN7rjElS16U1W5yyRIiIuWpwqrfgqYJGnOdRbMaEuFrkp7XZKKxV3E2Snr6KnaksD2qio5v1TodCpWSRUsUc0vnSMYjXScPDxKic1x2yd1NkLWpR394/j6HNLVOpOMtvef5+pUABVLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//9k=" alt="CA India Logo"/>
+    <div class="nav-brand-text">
+      <div class="nav-logo">R.K. <span>Jhunjhunwala</span> & Associates</div>
+      <div class="nav-tagline">Chartered Accountants · FRN. 135769W · Est. 1977</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#howwedoit">How We Work</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span>Chartered Accountants · Mumbai</div>
+    <h1>Your Trusted<br/><em>Financial &</em><br/>Tax Partner</h1>
+    <p class="hero-sub">We support businesses, corporates, and NRIs with taxation, auditing, compliance, and strategic advisory — so you can focus on growth with complete confidence.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Book a Consultation</a>
+      <a href="#services" class="btn-ghost">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-n">47+</div>
+        <div class="stat-l">Years of Practice</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">33+</div>
+        <div class="stat-l">Yrs in Direct Tax</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">3</div>
+        <div class="stat-l">Qualified Partners</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card-stack">
+      <div class="hcard hcard-accent">
+        <div class="hcard-icon">⚖️</div>
+        <div class="hcard-title">Integrity in Every Number</div>
+        <div class="hcard-body">Whatever we commit, we make it happen. Our hallmark is a personalised service approach rooted in professional ethics.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">📋</div>
+        <div class="hcard-title">Single-Window Compliance</div>
+        <div class="hcard-body">Direct Tax, GST, FEMA, IBC, MCA — all handled under one roof by specialists with decades of experience.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">🌐</div>
+        <div class="hcard-title">NRI & Global Clients</div>
+        <div class="hcard-body">Serving Non-Residents across the globe with tailored FEMA, DTAA, and cross-border tax advisory.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="section-eyebrow">About the Firm</div>
+    <h2>Nearly Five<br/>Decades of<br/><em>Trusted Service</em></h2>
+    <p class="body-text">
+      Established in <strong>1977 by CA Rajesh Kumar Jhunjhunwala</strong> as a proprietary concern, the firm was converted into a <strong>Partnership (RKJA) in 2011</strong>. Our professional approach blended with personal touch has earned the firm enormous confidence from all clients — reflected in enduring relationships and consistent portfolio growth.
+    </p>
+    <p class="body-text">
+      We are proud to be a <strong>professionally managed, service-oriented and knowledge-based</strong> firm. Our entire success is the result of dedication and commitment to the highest level of personalised service.
+    </p>
+    <div class="about-pillars">
+      <div class="ab-pill">
+        <div class="ab-pill-icon">⚖️</div>
+        <div class="ab-pill-title">Integrity</div>
+        <div class="ab-pill-body">Unwavering ethics in every engagement.</div>
+      </div>
+      <div class="ab-pill">
+        <div class="ab-pill-icon">🎯</div>
+        <div class="ab-pill-title">Excellence</div>
+        <div class="ab-pill-body">Quality is our priority — always.</div>
+      </div>
+      <div class="ab-pill">
+        <div class="ab-pill-icon">🤝</div>
+        <div class="ab-pill-title">Partnership</div>
+        <div class="ab-pill-body">We are partners, not just service providers.</div>
+      </div>
+      <div class="ab-pill">
+        <div class="ab-pill-icon">💡</div>
+        <div class="ab-pill-title">Knowledge</div>
+        <div class="ab-pill-body">Current across tax law, IBC, FEMA, and beyond.</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="vision-block">
+      <div class="vision-label">Our Vision</div>
+      <div class="vision-title">To Be a Firm of Dynamic Professionals</div>
+      <div class="vision-body">Enhancing growth and providing business advisory that is genuinely valuable to our clients — helping them succeed with clarity and confidence.</div>
+    </div>
+    <div class="vision-block">
+      <div class="vision-label">Our Quality Policy</div>
+      <div class="vision-title">Partners, Not Just Providers</div>
+      <div class="vision-body">We maintain professional ethics to ensure regulatory compliance and continuously improve the effectiveness of our services. We look at ourselves as partners — this mindset allows us to work beyond routine.</div>
+    </div>
+    <div class="vision-block">
+      <div class="vision-label">How We Work</div>
+      <div class="vision-title">Proactive. Collaborative. Precise.</div>
+      <ul class="vision-list">
+        <li>Proactive communication with every client</li>
+        <li>Timely updating and reminders on key deadlines</li>
+        <li>Zero-based effort in critical and complex cases</li>
+        <li>Focus on needs — and anticipate future needs</li>
+        <li>Bespoke program designed for each assignment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS STRIP -->
+<div id="clients">
+  <div class="clients-label">A selection of clients we are proud to serve</div>
+  <div class="clients-row">
+    <div class="chip">Inventurus Knowledge Solutions</div>
+    <div class="chip">Ashish Kacholia</div>
+    <div class="chip">Asymmetrique Communication</div>
+    <div class="chip">Beehive Communication</div>
+    <div class="chip">Nilaya Hermitage</div>
+    <div class="chip">ICL School & College</div>
+    <div class="chip">R-Jhunjhunwala Foundation</div>
+    <div class="chip">Dynamix Group</div>
+    <div class="chip">N N Sippy Productions</div>
+    <div class="chip">Neumac Developer & Builder</div>
+    <div class="chip">Fortune Gourmet</div>
+    <div class="chip">Christina & Tanyo Exports</div>
+    <div class="chip">Another Drop</div>
+    <div class="chip">Globus Logisys</div>
+    <div class="chip">Talat Aziz</div>
+    <div class="chip">National Clearing</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-top">
+    <div>
+      <div class="section-eyebrow">What We Offer</div>
+      <h2>Our <em>Services</em></h2>
+    </div>
+    <p class="services-sub">A comprehensive, single-window suite of financial, tax, and regulatory services — delivered with precision and depth of experience since 1977.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc">
+      <div class="svc-num">01</div>
+      <div class="svc-title">Direct Tax</div>
+      <div class="svc-body">Over 33 years of expertise in tax planning, income tax assessment, and representation before the IT Department, Appellate Authorities, and the Income Tax Settlement Commission.</div>
+      <div class="svc-link">Learn More →</div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">02</div>
+      <div class="svc-title">Indirect Tax & GST</div>
+      <div class="svc-body">Registration, consultation, GST audits, filing of returns, and assessments. Full compliance support under the unified GST regime for businesses across sectors.</div>
+      <div class="svc-link">Learn More →</div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">03</div>
+      <div class="svc-title">Audit & Assurance</div>
+      <div class="svc-body">Statutory Audit, Internal Audit, Tax Audit, Proprietary Audit, and Forensic Audit — independently examining operations to manage risk at every level.</div>
+      <div class="svc-link">Learn More →</div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">04</div>
+      <div class="svc-title">NRI & FEMA Advisory</div>
+      <div class="svc-body">Serving Non-Residents globally with DTAA benefits, repatriation advisory, FEMA compliance, and NRI income tax returns — handled with rich cross-border expertise.</div>
+      <div class="svc-link">Learn More →</div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">05</div>
+      <div class="svc-title">IBC — Insolvency Law</div>
+      <div class="svc-body">Specialised consultancy in Insolvency & Bankruptcy Code (2016). CA Sandeep Goel is a registered Insolvency Professional offering expert resolution and advisory services.</div>
+      <div class="svc-link">Learn More →</div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">06</div>
+      <div class="svc-title">Regulatory Compliance</div>
+      <div class="svc-body">Single-window compliance across Direct Taxes, GST, MVAT, Withholding Tax, and complex financial accounting issues including valuations, listings, and assurance.</div>
+      <div class="svc-link">Learn More →</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section id="howwedoit">
+  <div class="how-left">
+    <div class="section-eyebrow">Our Approach</div>
+    <h2>How We<br/><em>Do It</em></h2>
+    <p class="body-text">We don't just complete assignments — we build a programme around each client's specific needs, anticipate challenges before they arise, and deliver consistently.</p>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <div>
+          <div class="how-step-title">Understand the Client's World</div>
+          <div class="how-step-body">We invest time upfront to understand the business, industry, and financial landscape before recommending any course of action.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <div>
+          <div class="how-step-title">Design a Bespoke Programme</div>
+          <div class="how-step-body">Every client gets a tailored engagement plan with clear timelines, milestones, and responsibilities — nothing generic.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <div>
+          <div class="how-step-title">Proactive Communication</div>
+          <div class="how-step-body">Regular updates, deadline reminders, and open channels ensure clients are always informed and never caught off guard.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">04</div>
+        <div>
+          <div class="how-step-title">Zero-Based Effort on Critical Matters</div>
+          <div class="how-step-body">Complex or high-stakes cases receive full, fresh-eyed attention — relying on our deep knowledge bank for the best outcome.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="how-right">
+    <div class="how-highlight">
+      <div class="how-highlight-text">"Ever since inception we strive for excellence, keeping in mind that Quality is Priority. Whatever we commit, we make it happen."</div>
+      <div class="how-highlight-attr">— R.K. Jhunjhunwala & Associates · Firm Philosophy</div>
+      <div class="how-frn-row">
+        <div class="how-frn-cell">
+          <div class="how-frn-label">ICAI Registration</div>
+          <div class="how-frn-val">FRN. 135769W</div>
+        </div>
+        <div class="how-frn-cell">
+          <div class="how-frn-label">Founded</div>
+          <div class="how-frn-val">1977 · Partnership 2011</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="team-header">
+    <div>
+      <div class="section-eyebrow">Our Core Team</div>
+      <h2>The People <em>Behind</em><br/>the Practice</h2>
+    </div>
+    <p class="team-note">Supported by 6 semi-qualified CA staff and 2 assistants who ensure day-to-day excellence and client responsiveness.</p>
+  </div>
+  <div class="team-grid">
+    <div class="tcard">
+      <div class="tcard-avatar">SG</div>
+      <div class="tcard-name">CA Sandeep Goel</div>
+      <div class="tcard-role">Managing Partner · Insolvency Professional</div>
+      <div class="tcard-bio">Qualified in 1995 (Membership No. 049214). Distinguished Rank Holder — 18th Rank in Inter, 42nd Rank in Final. Deep expertise in Corporate Accounting, Direct & Indirect Taxation, Transfer Pricing, FEMA, SEZ Act, and Auditing.</div>
+      <span class="tcard-badge">ICAI Rank Holder · 1995</span>
+    </div>
+    <div class="tcard">
+      <div class="tcard-avatar">RM</div>
+      <div class="tcard-name">CA Rajesh Modi</div>
+      <div class="tcard-role">Partner</div>
+      <div class="tcard-bio">Associated with R.K. Jhunjhunwala & Associates for over 20 years. Handles the complete gamut of work involving Audit, Taxation, Returns, and Assessments across a diverse range of client sectors.</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-avatar">VK</div>
+      <div class="tcard-name">CA Vinay Kanodia</div>
+      <div class="tcard-role">Partner</div>
+      <div class="tcard-bio">Associated with the firm for over 15 years. Handles the complete gamut of work involving Audit, Taxation, Returns, and Assessments with precision, diligence, and consistent client satisfaction.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <div class="section-eyebrow">Contact Us</div>
+    <h2>Let's Start a<br/><em>Conversation</em></h2>
+    <p class="contact-desc">Whether you need tax planning, compliance support, IBC advisory, or NRI services — our team is ready to help. Reach out for an initial consultation.</p>
+
+    <div class="cdetail">
+      <div class="cdetail-icon">👤</div>
+      <div>
+        <div class="cdetail-label">Contact Person</div>
+        <div class="cdetail-val">CA Sandeep Goel — Managing Partner</div>
+      </div>
+    </div>
+    <div class="cdetail">
+      <div class="cdetail-icon">📱</div>
+      <div>
+        <div class="cdetail-label">Mobile</div>
+        <div class="cdetail-val"><a href="tel:9821186339">+91 98211 86339</a></div>
+      </div>
+    </div>
+    <div class="cdetail">
+      <div class="cdetail-icon">📞</div>
+      <div>
+        <div class="cdetail-label">Office</div>
+        <div class="cdetail-val"><a href="tel:02249712167">022 – 4971 2167</a></div>
+      </div>
+    </div>
+    <div class="cdetail">
+      <div class="cdetail-icon">✉️</div>
+      <div>
+        <div class="cdetail-label">Email</div>
+        <div class="cdetail-val">
+          <a href="/cdn-cgi/l/email-protection#13617879722123222353747e727a7f3d707c7e"><span class="__cf_email__" data-cfemail="1e6c75747f2c2e2f2e5e79737f7772307d7173">[email&#160;protected]</span></a><br/>
+          <a href="/cdn-cgi/l/email-protection#2c4b4349405f4d424849495c1a1c6c554d444343024f4341"><span class="__cf_email__" data-cfemail="781f171d140b19161c1d1d084e48380119101717561b1715">[email&#160;protected]</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="cdetail">
+      <div class="cdetail-icon">🌐</div>
+      <div>
+        <div class="cdetail-label">Website</div>
+        <div class="cdetail-val"><a href="http://www.carkj.in" target="_blank">www.carkj.in</a></div>
+      </div>
+    </div>
+
+    <div class="offices">
+      <div class="office-box">
+        <div class="office-label">Registered Office</div>
+        <div class="office-val">1604, Verona,<br/>Hiranandani Gardens, Powai,<br/>Mumbai – 400 076</div>
+      </div>
+      <div class="office-box">
+        <div class="office-label">Corporate Office</div>
+        <div class="office-val">304, Conwood Paragon,<br/>Walbhat Road, Goregaon East,<br/>Mumbai – 400 063</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <div class="section-eyebrow">Send an Enquiry</div>
+    <h2>We'll Get Back<br/>to You <em>Promptly</em></h2>
+    <div class="cform">
+      <div class="crow">
+        <div class="cfield">
+          <label for="fn">First Name</label>
+          <input type="text" id="fn" placeholder="Rahul"/>
+        </div>
+        <div class="cfield">
+          <label for="ln">Last Name</label>
+          <input type="text" id="ln" placeholder="Mehta"/>
+        </div>
+      </div>
+      <div class="cfield">
+        <label for="em">Email Address</label>
+        <input type="email" id="em" placeholder="rahul@company.com"/>
+      </div>
+      <div class="cfield">
+        <label for="ph">Phone / WhatsApp</label>
+        <input type="tel" id="ph" placeholder="+91 98XXX XXXXX"/>
+      </div>
+      <div class="cfield">
+        <label for="sv">Service Required</label>
+        <select id="sv">
+          <option value="" disabled selected>Select a service…</option>
+          <option>Direct Tax Advisory</option>
+          <option>Indirect Tax & GST</option>
+          <option>Audit & Assurance</option>
+          <option>NRI & FEMA Services</option>
+          <option>IBC / Insolvency Law</option>
+          <option>Regulatory Compliance</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="cfield">
+        <label for="mg">Your Message</label>
+        <textarea id="mg" placeholder="Briefly describe your requirements…"></textarea>
+      </div>
+      <button class="btn-submit" onclick="submitForm()">Send Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">R.K.<span>Jhunjhunwala</span> & Associates</div>
+    <div class="footer-frn">Chartered Accountants · FRN. 135769W · Established 1977</div>
+  </div>
+  <div class="footer-copy">© 2025 RKJA. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function submitForm(){
+    const req=['fn','ln','em','sv','mg'];
+    if(req.some(id=>!document.getElementById(id).value.trim())){
+      alert('Please fill in all required fields.');return;
+    }
+    alert('Thank you for reaching out to R.K. Jhunjhunwala & Associates.\nCA Sandeep Goel will contact you shortly.');
+    req.forEach(id=>document.getElementById(id).value='');
+    document.getElementById('ph').value='';
+  }
+  // Active nav highlight on scroll
