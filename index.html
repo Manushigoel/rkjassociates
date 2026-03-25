@@ -501,7 +501,7 @@
   <div class="topbar-left">
     <span>📞 <a href="tel:9821186339">+91 98211 86339</a></span>
     <div class="topbar-divider"></div>
-    <span>✉️ <a href="/cdn-cgi/l/email-protection#d6a4bdbcb7e4e6e7e696b1bbb7bfbaf8b5b9bb"><span class="__cf_email__" data-cfemail="8cfee7e6edbebcbdbcccebe1ede5e0a2efe3e1">[email&#160;protected]</span></a></span>
+    <span>✉️ <a href="mailto:rkja2010@gmail.com">rkja2010@gmail.com</a></span>
     <div class="topbar-divider"></div>
     <span>🌐 <a href="http://www.carkj.in" target="_blank">www.carkj.in</a></span>
   </div>
@@ -840,8 +840,8 @@
       <div>
         <div class="cdetail-label">Email</div>
         <div class="cdetail-val">
-          <a href="/cdn-cgi/l/email-protection#13617879722123222353747e727a7f3d707c7e"><span class="__cf_email__" data-cfemail="1e6c75747f2c2e2f2e5e79737f7772307d7173">[email&#160;protected]</span></a><br/>
-          <a href="/cdn-cgi/l/email-protection#2c4b4349405f4d424849495c1a1c6c554d444343024f4341"><span class="__cf_email__" data-cfemail="781f171d140b19161c1d1d084e48380119101717561b1715">[email&#160;protected]</span></a>
+          <a href="mailto:rkja2010@gmail.com">rkja2010@gmail.com</a><br/>
+          <a href="mailto:rkja2010@gmail.com">rkja2010@gmail.com</a>
         </div>
       </div>
     </div>
@@ -929,14 +929,30 @@
     document.getElementById('mobileMenu').classList.toggle('open');
   }
 </script>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function submitForm(){
     const req=['fn','ln','em','sv','mg'];
     if(req.some(id=>!document.getElementById(id).value.trim())){
       alert('Please fill in all required fields.');return;
     }
-    alert('Thank you for reaching out to R.K. Jhunjhunwala & Associates.\nCA Sandeep Goel will contact you shortly.');
-    req.forEach(id=>document.getElementById(id).value='');
-    document.getElementById('ph').value='';
+    const fn = document.getElementById('fn').value.trim();
+    const ln = document.getElementById('ln').value.trim();
+    const em = document.getElementById('em').value.trim();
+    const ph = document.getElementById('ph').value.trim();
+    const sv = document.getElementById('sv').value.trim();
+    const mg = document.getElementById('mg').value.trim();
+    const subject = encodeURIComponent('Enquiry from ' + fn + ' ' + ln + ' - ' + sv);
+    const body = encodeURIComponent(
+      'Name: ' + fn + ' ' + ln + '\n' +
+      'Email: ' + em + '\n' +
+      'Phone: ' + ph + '\n' +
+      'Service: ' + sv + '\n\n' +
+      'Message:\n' + mg
+    );
+    window.location.href = 'mailto:rkja2010@gmail.com?subject=' + subject + '&body=' + body;
+    setTimeout(function(){
+      req.forEach(id=>document.getElementById(id).value='');
+      document.getElementById('ph').value='';
+    }, 1000);
   }
   // Active nav highlight on scroll
